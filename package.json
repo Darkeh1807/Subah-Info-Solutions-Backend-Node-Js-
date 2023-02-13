@@ -1,0 +1,14 @@
+{
+  "name": "subah_info_solutions_backend",
+  "version": "1.0.0",
+  "description": "A school management system backend for subah_info_solutions",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elijah Agbedam Darkeh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
