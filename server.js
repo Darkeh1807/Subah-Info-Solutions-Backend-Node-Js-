@@ -8,6 +8,17 @@ const functions = require("firebase-functions");
 server.use(bodyParser.json());
 
 
+mongoose.set('strictQuery', false);
+    mongoose.connect(DB_URL, { useNewUrlParser: true }).then(
+        function () {
+            console.log("Database is connected successfully");
+        }
+    ).
+        catch(
+            function (e) {
+                console, log(e)
+            }
+        )
 //POST STUDENT
 server.post("/students", async (req, res) => {
     const student = new Student(req.body);
@@ -45,18 +56,8 @@ server.get("/students/:id", async (req, res) => {
 
 })
 
-server.listen(2000, function () {
+server.listen( 2000, function () {
     console.log("Server is running at port 2000");
-    mongoose.set('strictQuery', false);
-    mongoose.connect(DB_URL, { useNewUrlParser: true }).then(
-        function () {
-            console.log("Database is connected successfully");
-        }
-    ).
-        catch(
-            function (e) {
-                console, log(e)
-            }
-        )
+    
 })
 
