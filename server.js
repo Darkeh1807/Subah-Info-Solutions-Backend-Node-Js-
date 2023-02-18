@@ -4,7 +4,8 @@ const DB_URL = "mongodb+srv://darkeh1807:alisajunior@cluster0.gyzovmf.mongodb.ne
 const server = express()
 const bodyParser = require("body-parser")
 const Student = require("./models/student")
-server.use(bodyParser.json())
+const functions = require("firebase-functions");
+server.use(bodyParser.json());
 
 
 //POST STUDENT
@@ -23,6 +24,7 @@ server.get("/students", async (req, res) => {
     try {
         const student = await Student.find();
         res.send(student)
+
     } catch (error) {
         console.log(error)
     }
@@ -30,12 +32,12 @@ server.get("/students", async (req, res) => {
 
 
 //GET A SINGLE STUDENT BY ID
-server.get("/students:id", async (req,res)=>{
+server.get("/students/:id", async (req, res) => {
     try {
-        const student = await Student.findOne({id:req.params.id});
+        const student = await Student.findOne({ id: req.params.id });
         if (!student) {
             return res.send(student)
-        } 
+        }
         res.send(student)
     } catch (error) {
         res.send(error)
@@ -57,3 +59,4 @@ server.listen(2000, function () {
             }
         )
 })
+
